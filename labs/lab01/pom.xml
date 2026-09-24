@@ -11,7 +11,19 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>0924demo</artifactId>
+    <artifactId>lab01</artifactId>
     <packaging>war</packaging>
-    <name>0924demo</name>
+    <name>lab01</name>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <configuration>
+                    <warSourceDirectory>web</warSourceDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
 </project>

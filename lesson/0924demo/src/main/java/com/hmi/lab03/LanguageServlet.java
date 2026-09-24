@@ -7,6 +7,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 
 @WebServlet("/LanguageServlet")
 public class LanguageServlet extends HttpServlet {
@@ -14,6 +15,12 @@ public class LanguageServlet extends HttpServlet {
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
+
+        String header = request.getHeader("accept-language");
+        String ip = request.getRemoteAddr();
+        String method = request.getMethod();
+        PrintWriter writer = response.getWriter();
+
     }
 
     @Override

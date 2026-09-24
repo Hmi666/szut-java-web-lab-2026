@@ -11,7 +11,7 @@
         <relativePath>../../pom.xml</relativePath>
     </parent>
 
-    <artifactId>0924demo</artifactId>
+    <artifactId>lab02</artifactId>
     <packaging>war</packaging>
-    <name>0924demo</name>
+    <name>lab02</name>
 </project>
