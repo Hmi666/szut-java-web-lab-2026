@@ -7,19 +7,15 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
-import java.util.Arrays;
 
-@WebServlet("/hobbyForm")
-public class HobbyServlet extends HttpServlet {
+@WebServlet("/welcome")
+public class WelcomeServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
         request.setCharacterEncoding("utf-8");
         response.setContentType("text/html;charset=utf-8");
-//        String hobby = request.getParameter("hobby");
-//        response.getWriter().write(hobby);
 
-        String[] hobbies = request.getParameterValues("hobby");
-        response.getWriter().write(Arrays.toString(hobbies) + "092224110 李理想");
+        response.getWriter().write("登录成功！092224110\n李理想");
     }
 
     @Override

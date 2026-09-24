@@ -29,8 +29,8 @@ public class LanguageServlet extends HttpServlet {
         System.out.println(language);
 
         Map<String,String> text = new HashMap<>();
-        text.put("en-US","welcome to my website");
-        text.put("zh-cn","欢迎访问我的网站");
+        text.put("en-US","welcome to my website + 092224110 + 李理想");
+        text.put("zh-cn","欢迎访问我的网站+ 092224110 + 李理想");
 
         String s = text.get(language);
         if(s !=null){

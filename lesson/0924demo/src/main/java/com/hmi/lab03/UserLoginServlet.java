@@ -8,6 +8,7 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.Objects;
 
 @WebServlet("/userlogin")
 public class UserLoginServlet extends HttpServlet {
@@ -19,6 +20,13 @@ public class UserLoginServlet extends HttpServlet {
         String password = request.getParameter("password");
         PrintWriter writer = response.getWriter();
         writer.write("username： " + username + "\npassword：" + password);
+
+        if(!Objects.isNull(username)){
+            request.setAttribute("username",username);
+            request.getRequestDispatcher("/welcome").forward(request,response);
+        }else {
+            response.sendRedirect("UserLogin.html");
+        }
     }
 
     @Override
