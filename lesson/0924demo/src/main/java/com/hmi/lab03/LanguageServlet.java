@@ -8,6 +8,8 @@ import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.HashMap;
+import java.util.Map;
 
 @WebServlet("/LanguageServlet")
 public class LanguageServlet extends HttpServlet {
@@ -19,7 +21,23 @@ public class LanguageServlet extends HttpServlet {
         String header = request.getHeader("accept-language");
         String ip = request.getRemoteAddr();
         String method = request.getMethod();
+
         PrintWriter writer = response.getWriter();
+
+        String language = header.split(",")[0];
+
+        System.out.println(language);
+
+        Map<String,String> text = new HashMap<>();
+        text.put("en-US","welcome to my website");
+        text.put("zh-cn","欢迎访问我的网站");
+
+        String s = text.get(language);
+        if(s !=null){
+            writer.print(s);
+        }
+
+
 
     }
 
