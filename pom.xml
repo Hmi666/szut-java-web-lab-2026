@@ -13,6 +13,7 @@
     <modules>
         <module>labs/lab01</module>
         <module>labs/lab02</module>
+        <module>labs/lab03</module>
         <module>lesson/0917demo</module>
         <module>lesson/0924demo</module>
     </modules>
