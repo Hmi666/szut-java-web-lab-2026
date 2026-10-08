@@ -16,6 +16,7 @@
         <module>labs/lab03</module>
         <module>lesson/0917demo</module>
         <module>lesson/0924demo</module>
+        <module>lesson/1008demo</module>
     </modules>
 
     <properties>

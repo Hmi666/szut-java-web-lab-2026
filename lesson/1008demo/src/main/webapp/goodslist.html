@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>购物车（未登录）</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: "Microsoft Yahei", sans-serif;
+        }
+        body {
+            width: 600px;
+            margin: 50px auto;
+            background-color: #f5f7fa;
+        }
+        .container {
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0 2px 10px #ddd;
+        }
+        h3 {
+            color: #2c3e50;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+        .goods-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding:12px 0;
+            border-bottom:1px solid #eee;
+        }
+        .goods-name{
+            font-size:17px;
+            color:#333;
+        }
+        .add-link{
+            padding:6px 14px;
+            background:#3498db;
+            color:#fff;
+            text-decoration: none;
+            border-radius:4px;
+            font-size:15px;
+        }
+        .add-link:hover{
+            background:#2980b9;
+        }
+        .clear-link{
+            display:inline-block;
+            padding:8px 16px;
+            background:#e74c3c;
+            color:#fff;
+            text-decoration: none;
+            border-radius:4px;
+            font-size:15px;
+            margin-top:20px;
+        }
+        .clear-link:hover{
+            background:#c0392b;
+        }
+        .line{
+            height:1px;
+            background:#ccc;
+            margin:20px 0;
+        }
+        .refresh-link{
+            display:block;
+            text-align:center;
+            margin-top:10px;
+            color:#3498db;
+            font-size:16px;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h3>商品列表</h3>
+    <div class="goods-row">
+        <span class="goods-name">手机 1001</span>
+        <a class="add-link" href="CartServlet?id=1001">加入购物车</a>
+    </div>
+    <div class="goods-row">
+        <span class="goods-name">耳机 1002</span>
+        <a class="add-link" href="CartServlet?id=1002">加入购物车</a>
+    </div>
+    <div class="goods-row">
+        <span class="goods-name">键盘 1003</span>
+        <a class="add-link" href="CartServlet?id=1003">加入购物车</a>
+    </div>
+    <div class="goods-row">
+        <span class="goods-name">092224110 李理想</span>
+        <a class="add-link" href="CartServlet?id=1004">加入购物车</a>
+    </div>
+    <div style="text-align:center">
+        <a class="clear-link" href="CartServlet?action=clear">清空购物车</a>
+    </div>
+
+    <div class="line"></div>
+    <a class="refresh-link" href="CartServlet">查看购物车</a>
+</div>
+</body>
+</html>
