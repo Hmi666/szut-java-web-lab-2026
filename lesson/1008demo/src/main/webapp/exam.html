@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <title>在线考试系统</title>
+  <style>
+    .exam-box{
+      width:600px;
+      margin:50px auto;
+      padding:30px;
+      background:#fff;
+      border-radius:8px;
+      box-shadow:0 0 8px #ccc;
+    }
+    h2{
+      text-align:center;
+    }
+    .question{
+      margin:20px 0;
+      font-size:18px;
+    }
+    .option{
+      margin:8px 0;
+    }
+    .btn-submit{
+      width:100%;
+      padding:10px;
+      background:#2980b9;
+      color:#fff;
+      border:none;
+      border-radius:4px;
+      font-size:18px;
+      cursor:pointer;
+    }
+  </style>
+</head>
+<body>
+<div class="exam-box">
+  <h2>JavaWeb期末考试</h2>
+  <form action="ExamServlet" method="post">
+    <div class="question">
+      <p>1.下面哪一个是Session的特点？</p>
+      <div class="option">
+        <input type="radio" name="q1" value="A" id="q1a">
+        <label for="q1a">A. 数据保存在客户端浏览器</label>
+      </div>
+      <div class="option">
+        <input type="radio" name="q1" value="B" id="q1b">
+        <label for="q1b">B. 数据保存在服务器端</label>
+      </div>
+      <div class="option">
+        <input type="radio" name="q1" value="C" id="q1c">
+        <label for="q1c">C. 浏览器关闭后一定永久保留</label>
+      </div>
+    </div>
+    <div class="question">
+      <p>2.Cookie默认保存在哪里？</p>
+      <div class="option">
+        <input type="radio" name="q2" value="A" id="q2a">
+        <label for="q2a">A. 客户端浏览器</label>
+      </div>
+      <div class="option">
+        <input type="radio" name="q2" value="B" id="q2b">
+        <label for="q2b">B. 服务器内存</label>
+      </div>
+      <div class="option">
+        <input type="radio" name="q2" value="C" id="q2c">
+        <label for="q2c">C. 数据库</label>
+      </div>
+    </div>
+    <input class="btn-submit" type="submit" value="提交试卷">
+  </form>
+</div>
+</body>
+</html>
