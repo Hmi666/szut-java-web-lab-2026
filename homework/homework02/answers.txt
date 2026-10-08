@@ -1,0 +1,42 @@
+（1）在用户登录验证中，Servlet接收前端表单提交的用户名和密码时，需使用什么方法？其作用分别是什么？
+
+答：使用 HttpServletRequest 的 getParameter() 方法。
+- request.getParameter("username")：根据表单控件的 name="username" 获取用户提交的用户名；
+- request.getParameter("password")：根据表单控件的 name="password" 获取用户提交的密码。
+
+（若表单 method="post"，一般在 doPost() 中接收；method="get" 则在 doGet() 中接收。本实验表单为 post，LoginServlet 在 doPost 中调用 doGet 完成处理。）
+
+
+（2）若登录失败需将“用户名”的信息回显到登录页面，应使用哪个域对象存储信息？该域对象的作用范围是多久？
+
+答：应使用 request 域对象（HttpServletRequest）存储，例如：
+request.setAttribute("username", username);
+再通过请求转发回到登录页面取出回显。
+
+作用范围：仅限一次请求。从客户端发起请求开始，到服务器完成响应结束；请求转发（forward）期间该数据仍然有效，请求结束后数据销毁。不适合跨多次请求保存。
+
+
+（3）登录成功后跳转到欢迎页面，重定向（sendRedirect）和请求转发（forward）的核心区别是什么？从浏览器地址栏变化角度说明。
+
+答：核心区别是“谁发第二次请求、浏览器是否换地址”。
+
+- 请求转发（forward）：服务器内部把请求转给欢迎页面，浏览器只发了一次请求。地址栏仍显示原来的 Servlet 地址（例如 /login），不会变成欢迎页的 URL。
+- 重定向（sendRedirect）：服务器返回 302 + Location，浏览器再向欢迎页发一次新请求。地址栏会变成欢迎页面的新地址。
+
+
+（4）编写Servlet时，需要在web.xml中配置Servlet映射信息，其中<servlet-name>和<url-pattern>标签的作用分别是什么？
+
+答：
+- <servlet-name>：Servlet 的逻辑名称。在 <servlet> 中给该类起名，再在 <servlet-mapping> 中用同一个名字把该类和访问路径绑定起来。
+- <url-pattern>：客户端访问该 Servlet 的 URL 映射路径。浏览器请求匹配该路径时，容器会调用对应的 Servlet。
+
+示例：
+<servlet>
+    <servlet-name>LoginServlet</servlet-name>
+    <servlet-class>com.hmi.lab03.LoginServlet</servlet-class>
+</servlet>
+<servlet-mapping>
+    <servlet-name>LoginServlet</servlet-name>
+    <url-pattern>/login</url-pattern>
+</servlet-mapping>
+（本实验实际使用 @WebServlet("/login") 注解完成同等映射。）

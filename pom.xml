@@ -17,6 +17,7 @@
         <module>lesson/0917demo</module>
         <module>lesson/0924demo</module>
         <module>lesson/1008demo</module>
+        <module>homework/homework02</module>
     </modules>
 
     <properties>
