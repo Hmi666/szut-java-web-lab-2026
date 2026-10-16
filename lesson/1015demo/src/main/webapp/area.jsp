@@ -11,6 +11,11 @@
   <title>计算圆的面积</title>
 </head>
 <body>
+
+<jsp:include page="time.jsp">
+  <jsp:param name="format" value="yyyy-MM-dd"/>
+</jsp:include>
+
 <form method="get" action="area.jsp">
   请输入半径：<input  step="any" required name="radius"
                    value="<%= request.getParameter("radius") == null ? "" : request.getParameter("radius") %>">

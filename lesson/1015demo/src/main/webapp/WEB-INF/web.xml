@@ -3,4 +3,29 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="https://jakarta.ee/xml/ns/jakartaee https://jakarta.ee/xml/ns/jakartaee/web-app_6_0.xsd"
          version="6.0">
+
+<!--    全局参数-->
+    <context-param>
+        <param-name>schoolName</param-name>
+        <param-value>SZUT</param-value>
+    </context-param>
+
+    <context-param>
+        <param-name>email</param-name>
+        <param-value>admin@szut.edu.cn</param-value>
+    </context-param>
+
+    <servlet>
+        <servlet-name>publishJSP</servlet-name>
+        <jsp-file>/publish.jsp</jsp-file>
+        <init-param>
+            <param-name>info</param-name>
+            <param-value>School Information</param-value>
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>publishJSP</servlet-name>
+        <url-pattern>/publish.jsp</url-pattern>
+    </servlet-mapping>
 </web-app>
