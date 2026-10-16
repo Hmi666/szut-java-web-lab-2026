@@ -1,0 +1,63 @@
+（1）JSP 中 page 指令的主要作用是什么？请列举至少 3 个常用的 page 指令属性并说明其功能。
+
+答：page 指令用于定义整个 JSP 页面的全局属性，告诉容器如何"翻译并编译"这个页面，
+其作用范围是整个页面（写在页面任何位置都作用于全页）。常用属性：
+
+1. language：指定 JSP 页面使用的脚本语言，目前唯一合法取值是 java，例如 language="java"。
+2. contentType：设置响应内容的 MIME 类型和字符编码，例如 contentType="text/html;charset=UTF-8"，
+   保证浏览器按 HTML、UTF-8 解析，避免中文乱码。
+3. pageEncoding：指定 JSP 源文件本身的字符编码，容器按此编码读取 .jsp 文件，
+   例如 pageEncoding="UTF-8"（若与 contentType 的 charset 不一致，以 pageEncoding 为准）。
+4. import：导入页面脚本中要用到的 Java 包/类，相当于 Java 的 import 语句，
+   例如 import="java.util.List, java.util.ArrayList, java.util.Date"。
+5. session：控制页面是否自动使用 session 内置对象，取值 true/false，默认 true。
+6. errorPage / isErrorPage：errorPage 指定当前页面抛出异常时跳转的错误处理页；
+   isErrorPage 标记当前页面是否为错误处理页（可使用 exception 内置对象）。
+
+
+（2）JSP 脚本元素包含哪三类？请分别说明它们的语法格式及核心作用。
+
+答：三类脚本元素分别是声明、脚本片段（Scriptlet）和表达式。
+
+1. 声明（Declaration）
+   语法：<%! 变量或方法定义 %>
+   作用：定义 JSP 对应 Servlet 类的成员变量和方法（翻译后位于 _jspService 方法之外），
+   所声明的内容被所有请求共享。本实验用它定义了 Message 内部类及其 getter 方法。
+
+2. 脚本片段（Scriptlet）
+   语法：<% 若干条 Java 语句 %>
+   作用：编写页面请求处理时要执行的 Java 逻辑，翻译后嵌入 _jspService 方法体内，
+   按顺序执行。本实验用它完成了获取参数、校验、创建 Message 对象、
+   存入 application 域以及遍历留言集合的逻辑。
+
+3. 表达式（Expression）
+   语法：<%= 表达式 %>
+   作用：把表达式的值计算后输出到页面（等价于 out.print(表达式)），
+   注意表达式不能以分号结尾。本实验用它输出每条留言的留言人、内容和时间。
+
+
+（3）JSP 内置对象 request 和 session、application 的作用域分别是什么？请举例说明他们在实际开发中的典型使用场景（各举 1 个场景即可）。
+
+答：三者对应的属性作用域由小到大依次是 request < session < application。
+
+1. request（请求域）
+   作用域：一次请求（含请求转发 forward 的全过程）。从客户端发出请求开始，
+   到服务器对本次请求作出响应结束，数据即销毁。
+   典型场景：表单提交后校验失败，把用户填写的用户名放入 request 域
+   （request.setAttribute("username", username)），转发回登录页回显，
+   避免用户重新输入。
+
+2. session（会话域）
+   作用域：一次会话。从同一浏览器与服务器建立会话开始，到会话超时或浏览器关闭、
+   调用 invalidate() 结束；期间该用户的多次请求之间数据一直有效，但每个用户各自独立。
+   典型场景：用户登录成功后把用户信息存入 session
+   （session.setAttribute("loginUser", user)），用户在整个网站内访问任何页面
+   都能识别其登录状态；购物车也常存于 session。
+
+3. application（应用域/全局域）
+   作用域：整个 Web 应用。从服务器启动、应用部署开始，到服务器停止或应用卸载结束；
+   数据被该应用的所有用户、所有会话共享，服务器运行期间不会丢失。
+   典型场景：网站访问量统计（计数器），或本实验的留言板——
+   把所有留言的 List 集合存入 application
+   （application.setAttribute("messages", list)），任何用户在任何浏览器上
+   提交的留言都全局共享，服务器不重启就一直保留。
