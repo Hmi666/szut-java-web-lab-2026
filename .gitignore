@@ -90,3 +90,4 @@ logs/
 
 # Claude Code
 .claude/
+.workbuddy-ai
