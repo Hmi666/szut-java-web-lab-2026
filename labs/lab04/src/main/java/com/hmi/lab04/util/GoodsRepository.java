@@ -19,6 +19,7 @@ public final class GoodsRepository {
         GOODS.put("1003", new Goods("1003", "联想拯救者笔记本", 8299.00));
         GOODS.put("1004", new Goods("1004", "索尼降噪耳机", 1499.00));
         GOODS.put("1005", new Goods("1005", "罗技无线鼠标", 129.00));
+        GOODS.put("1006", new Goods("1006", "092224110 李理想", 129.00));
     }
 
     private GoodsRepository() {
